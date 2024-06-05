@@ -1,7 +1,9 @@
-import { Box, Container, Flex, Text, VStack, Link } from "@chakra-ui/react";
+import { Box, Container, Flex, Text, VStack, Link, Button } from "@chakra-ui/react";
+import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 import { Link as RouterLink } from "react-router-dom";
 
 const Index = () => {
+  const { logout } = useSupabaseAuth();
   return (
     <Container maxW="container.xl" p={0}>
       <Flex
@@ -22,6 +24,9 @@ const Index = () => {
           <Link as={RouterLink} to="/about" p={2} color="white">
             About
           </Link>
+        <Button onClick={logout} colorScheme="red" ml={4}>
+            Logout
+          </Button>
         </Box>
       </Flex>
       <Container
